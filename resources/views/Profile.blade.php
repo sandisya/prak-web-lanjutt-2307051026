@@ -11,7 +11,7 @@
     <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
 
         <div class="flex justify-center mb-3">
-            <img src="/img/samurai.jpg" alt="Profile" class="w-60 h-60 rounded-full border-4 border-gray-300 object-cover">
+            <img src="/assets/img/samurai.jpg" alt="Profile" class="w-60 h-60 rounded-full border-4 border-gray-300 object-cover">
         </div>
         <div class="space-y-5 text-left px-6 py-3">
             <div class="bg-gray-200 py-3 px-4 rounded-md font-semibold">Nama : <?= $nama ?></div>
