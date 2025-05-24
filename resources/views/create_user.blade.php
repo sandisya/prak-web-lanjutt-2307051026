@@ -6,30 +6,40 @@
     <title>Form User</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-gradient-to-r from-red-200 to-blue-300 flex items-center justify-center min-h-screen">
 
-    <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
-        <h2 class="text-2xl font-bold text-center mb-6">Tambah User</h2>
+    <div class="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
+        <h2 class="text-3xl font-extrabold text-center text-gray-700 mb-6">Tambah User</h2>
 
-        <form action="{{ route('user.store') }}" method="POST" class="space-y-4">
+        <form action="{{ route('user.store') }}" method="POST" class="space-y-5">
             @csrf
 
             <div>
-                <label for="nama" class="block font-medium">Nama :</label>
-                <input type="text" id="nama" name="nama" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500" required>
+                <label for="nama" class="block text-lg font-medium text-gray-700">Nama :</label>
+                <input type="text" id="nama" name="nama" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-400 focus:outline-none shadow-sm" >
+                @foreach($errors->get('nama') as $msg)
+                <p class="text-red-500 text-sm mt-1">{{$msg}}</p>
+                @endforeach
             </div>
 
             <div>
-                <label for="npm" class="block font-medium">NPM :</label>
-                <input type="text" id="npm" name="npm" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500" required>
+                <label for="npm" class="block text-lg font-medium text-gray-700">NPM :</label>
+                <input type="text" id="npm" name="npm" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-400 focus:outline-none shadow-sm" >
+                @foreach($errors->get('npm') as $msg)
+                <p class="text-red-500 text-sm mt-1">{{$msg}}</p>
+                @endforeach
             </div>
 
             <div>
-                <label for="kelas" class="block font-medium">Kelas :</label>
-                <input type="text" id="kelas" name="kelas" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500" required>
+                <label for="id_kelas" class="block text-lg font-medium text-gray-700">Kelas :</label>
+                <select name="kelas_id" id="kelas_id" required class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-400 focus:outline-none shadow-sm">
+                    @foreach ($kelas as $kelasItem)
+                    <option value="{{$kelasItem->id}}">{{$kelasItem->nama_kelas}}</option>
+                    @endforeach
+                </select>
             </div>
 
-            <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">Submit</button>
+            <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300 shadow-md">Submit</button>
         </form>
     </div>
 
